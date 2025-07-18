@@ -72,8 +72,8 @@ end
 local requestsDisabled = true --getgenv and getgenv().DISABLE_RAYFIELD_REQUESTS
 local InterfaceBuild = '3K3W'
 local Release = "2.8"
-local CeleXHubFolder = "CeleX Hub"
-local ConfigurationFolder = CeleXHubFolder.."/Configurations"
+local RayfieldFolder = "CeleX Hub"
+local ConfigurationFolder = RayfieldFolder.."/Configurations"
 local ConfigurationExtension = ".rfld"
 local settingsTable = {
 	General = {
