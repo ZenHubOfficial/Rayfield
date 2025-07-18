@@ -184,7 +184,7 @@ local function loadSettings()
 
 	if not success then 
 		if writefile then
-			warn('Rayfield had an issue accessing configuration saving capability.')
+			warn('CeleX-Hub had an issue accessing configuration saving capability.')
 		end
 	end
 end
@@ -654,7 +654,7 @@ local CoreGui = getService("CoreGui")
 
 -- Interface Management
 
-local Rayfield = useStudio and script.Parent:FindFirstChild('Rayfield') or game:GetObjects("rbxassetid://10804731440")[1]
+local Rayfield = useStudio and script.Parent:FindFirstChild('CeleX-Hub') or game:GetObjects("rbxassetid://10804731440")[1]
 local buildAttempts = 0
 local correctBuild = false
 local warned
@@ -670,12 +670,12 @@ repeat
 	correctBuild = false
 
 	if not warned then
-		warn('Rayfield | Build Mismatch')
-		print('Rayfield may encounter issues as you are running an incompatible interface version ('.. ((Rayfield:FindFirstChild('Build') and Rayfield.Build.Value) or 'No Build') ..').\n\nThis version of Rayfield is intended for interface build '..InterfaceBuild..'.')
+		warn('CeleX-Hub | Build Mismatch')
+		print('CeleX-Hub may encounter issues as you are running an incompatible interface version ('.. ((Rayfield:FindFirstChild('Build') and Rayfield.Build.Value) or 'No Build') ..').\n\nThis version of Rayfield is intended for interface build '..InterfaceBuild..'.')
 		warned = true
 	end
 
-	toDestroy, Rayfield = Rayfield, useStudio and script.Parent:FindFirstChild('Rayfield') or game:GetObjects("rbxassetid://10804731440")[1]
+	toDestroy, Rayfield = Rayfield, useStudio and script.Parent:FindFirstChild('CeleX-Hub') or game:GetObjects("rbxassetid://10804731440")[1]
 	if toDestroy and not useStudio then toDestroy:Destroy() end
 
 	buildAttempts = buildAttempts + 1
@@ -935,7 +935,7 @@ local function LoadConfiguration(Configuration)
 	local success, Data = pcall(function() return HttpService:JSONDecode(Configuration) end)
 	local changed
 
-	if not success then warn('Rayfield had an issue decoding the configuration file, please try delete the file and reopen Rayfield.') return end
+	if not success then warn('CeleX-Hub had an issue decoding the configuration file, please try delete the file and reopen Rayfield.') return end
 
 	-- Iterate through current UI elements' flags
 	for FlagName, Flag in pairs(RayfieldLibrary.Flags) do
@@ -1062,7 +1062,7 @@ function RayfieldLibrary:Notify(data) -- action e.g open messages
 		newNotification.Visible = true
 
 		if data.Actions then
-			warn('Rayfield | Not seeing your actions in notifications?')
+			warn('CeleX-Hub | Not seeing your actions in notifications?')
 			print("Notification Actions are being sunset for now, keep up to date on when they're back in the discord. (sirius.menu/discord)")
 		end
 
@@ -1506,14 +1506,14 @@ local function createSettings(window)
 		return
 	end
 
-	local newTab = window:CreateTab('Rayfield Settings', 0, true)
+	local newTab = window:CreateTab('CeleX-Hub Settings', 0, true)
 
-	if TabList['Rayfield Settings'] then
-		TabList['Rayfield Settings'].LayoutOrder = 1000
+	if TabList['CeleX-Hub Settings'] then
+		TabList['CeleX-Hub Settings'].LayoutOrder = 1000
 	end
 
-	if Elements['Rayfield Settings'] then
-		Elements['Rayfield Settings'].LayoutOrder = 1000
+	if Elements['CeleX-Hub Settings'] then
+		Elements['CeleX-Hub Settings'].LayoutOrder = 1000
 	end
 
 	-- Create sections and elements
@@ -1580,7 +1580,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	if not correctBuild and not Settings.DisableBuildWarnings then
 		task.delay(3, 
 			function() 
-				RayfieldLibrary:Notify({Title = 'Build Mismatch', Content = 'Rayfield may encounter issues as you are running an incompatible interface version ('.. ((Rayfield:FindFirstChild('Build') and Rayfield.Build.Value) or 'No Build') ..').\n\nThis version of Rayfield is intended for interface build '..InterfaceBuild..'.\n\nTry rejoining and then run the script twice.', Image = 4335487866, Duration = 15})		
+				RayfieldLibrary:Notify({Title = 'Build Mismatch', Content = 'CeleX-Hub may encounter issues as you are running an incompatible interface version ('.. ((Rayfield:FindFirstChild('Build') and Rayfield.Build.Value) or 'No Build') ..').\n\nThis version of Rayfield is intended for interface build '..InterfaceBuild..'.\n\nTry rejoining and then run the script twice.', Image = 4335487866, Duration = 15})		
 			end)
 	end
 
@@ -3556,7 +3556,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		createSettings(Window)
 	end)
 
-	if not success then warn('Rayfield had an issue creating settings.') end
+	if not success then warn('CeleX-Hub had an issue creating settings.') end
 
 	return Window
 end
@@ -3667,7 +3667,7 @@ if Topbar:FindFirstChild('Settings') then
 				end
 			end
 
-			Elements.UIPageLayout:JumpTo(Elements['Rayfield Settings'])
+			Elements.UIPageLayout:JumpTo(Elements['CeleX-Hub Settings'])
 		end)
 	end)
 
@@ -3748,7 +3748,7 @@ function RayfieldLibrary:LoadConfiguration()
 		if success and loaded and not notified then
 			RayfieldLibrary:Notify({Title = "CeleX-Hub Configurations", Content = "The configuration file for this script has been loaded from a previous session.", Image = 4384403532})
 		elseif not success and not notified then
-			warn('Rayfield Configurations Error | '..tostring(result))
+			warn('CeleX-Hub Configurations Error | '..tostring(result))
 			RayfieldLibrary:Notify({Title = "CeleX-Hub Configurations", Content = "We've encountered an issue loading your configuration correctly.\n\nCheck the Developer Console for more information.", Image = 4384402990})
 		end
 	end
